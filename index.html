@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>💖 Yesid Cano 💖</title>
+  <link rel="icon" type="image/png" href="iconopng.png">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <div class="corazones">
+    <span>💖</span>
+    <span>💕</span>
+    <span>💗</span>
+    <span>💘</span>
+    <span>💞</span>
+  </div>
+
+  <div class="contenedor" id="contenedorPrincipal">
+    <p>¿Te gusta Vannesa Pulido?</p>
+    <button id="yesBtn">Sí 💘</button>
+    <button id="noBtn">No</button>
+  </div>
+
+  <div class="carta-romantica" id="cartaRomantica">
+    <h2>Para Yesid 💖</h2>
+    <p>a veces pienso que mis palabras no bastan para decirte lo mucho que me gustas, no sé cómo dar a entender cada sentimiento que tengo por ti, porque soy muy mala expresando lo que siento, porque no existe vocabulario indicado que me ayude. No es suficiente el decir que me gustas porque mereces muchísimo más que dos simples palabras, siento mucho más que eso; aunque apenas estemos empezando a descubrirnos bien quiero que sepas que voy a darte todo para poder hacerte feliz y mostrarte lo bonito que puede ser vivir al lado de alguien</p>
+    <p>Gay si lo lees</p>
+    <div class="corazon-final">💘</div>
+    <button id="volverBtn">Volver</button>
+  </div>
+
+  <div class="flores"></div>
+  <audio id="audioRomantico" loop>
+    <source src="loveletter.mp3.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const yesBtn = document.getElementById('yesBtn');
+      const noBtn = document.getElementById('noBtn');
+      const volverBtn = document.getElementById('volverBtn');
+      const contenedor = document.getElementById('contenedorPrincipal');
+      const carta = document.getElementById('cartaRomantica');
+      const audio = document.getElementById('audioRomantico');
+      const flores = document.querySelector('.flores');
+
+      audio.volume = 0.3;
+
+      yesBtn.addEventListener('click', function () {
+        contenedor.style.display = 'none';
+        carta.style.display = 'block';
+        audio.play().catch(() => {
+          alert('Esto es demasiado gay 😭');
+        });
+        crearFlores(12);
+      });
+
+      volverBtn.addEventListener('click', function () {
+        carta.style.display = 'none';
+        contenedor.style.display = 'block';
+        audio.pause();
+        audio.currentTime = 0;
+      });
+
+      noBtn.addEventListener('mouseover', function () {
+        const maxX = window.innerWidth - noBtn.offsetWidth - 30;
+        const maxY = window.innerHeight - noBtn.offsetHeight - 30;
+        const newX = Math.random() * maxX;
+        const newY = Math.random() * maxY;
+        noBtn.style.position = 'absolute';
+        noBtn.style.left = `${newX}px`;
+        noBtn.style.top = `${newY}px`;
+      });
+
+      function crearFlores(cantidad) {
+        const emojis = ['🌸', '🌼', '🌺', '🌷', '💝'];
+        for (let i = 0; i < cantidad; i++) {
+          const flor = document.createElement('span');
+          flor.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
+          flor.style.position = 'absolute';
+          flor.style.left = `${Math.random() * 100}vw`;
+          flor.style.top = `${Math.random() * 100}vh`;
+          flor.style.fontSize = `${20 + Math.random() * 15}px`;
+          flor.style.animation = `flotar ${8 + Math.random() * 5}s linear infinite`;
+          flores.appendChild(flor);
+        }
+      }
+
+      function crearPetalos() {
+        const petalosContainer = document.createElement('div');
+        petalosContainer.className = 'petalos-flotantes';
+        document.body.appendChild(petalosContainer);
+
+        for (let i = 0; i < 12; i++) {
+          const petalo = document.createElement('div');
+          petalo.className = 'petalo';
+          petalo.innerHTML = '🌸';
+          petalo.style.left = `${Math.random() * 100}vw`;
+          petalo.style.top = `${Math.random() * 100}vh`;
+          petalo.style.fontSize = `${20 + Math.random() * 15}px`;
+          petalo.style.animationDuration = `${8 + Math.random() * 10}s`;
+          petalo.style.animationDelay = `${Math.random() * 3}s`;
+          petalosContainer.appendChild(petalo);
+        }
+      }
+
+      window.addEventListener('load', crearPetalos);
+    });
+  </script>
+</body>
+</html>
