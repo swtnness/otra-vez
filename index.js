@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
     contenedor.style.display = 'none';
     carta.style.display = 'block';
     audio.play().catch(() => {
-      alert('Tu navegador bloqueó la música 😭');
+      alert('😭');
     });
     crearFlores(12);
   });
